@@ -1,0 +1,287 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*
+#gx-smd {
+    border: 1px solid red;
+}
+#gx-menu {
+    border: 1px solid black;
+}
+#gx-left-side {
+    border: 1px solid black;
+}
+#gx-right-side {
+    border: 1px solid black;
+}
+.gx-body {
+	border: 1px solid green;
+}
+
+.gx-single-smd {
+	border: 1px solid black;
+
+}
+
+.gx-menu > ul > li {
+	border: 1px solid red;
+}
+
+.gx-infos {
+	border: 1px solid blue;
+}
+
+.gx-left-title-grand {
+	border: 1px solid;
+}
+
+footer {
+	border: 1px solid;
+}
+
+#gx-right-side {
+	border: 1px solid black;
+}
+.gx-project-category {
+	border: 1px solid black;
+}
+*/
+
+
+body {
+	font-family: 'Proxima Nova', Georgia, sans-serif;
+	font-size: 15px;
+	background-color: #f1f1f1;
+}
+/*Body of the site without footer*/
+.gx-body {
+	width: 1036px;
+	margin: 33px auto 33px;
+}
+/*Social media icons*/
+.gx-smd {
+	height: 44px;
+	float: left
+}
+.gx-single-smd {
+	width: 50px;
+	float: left;
+	background-image: url('../images/social_media/bg-social-media.png');
+	background-position: 0px 41px;
+    background-repeat: no-repeat;
+	text-align: center;
+}
+.gx-single-smd > a > img {
+	height: 44px;
+}
+/*Top Menu*/
+.gx-menu {
+	width: 600px;
+	height: 44px;
+	float: right;
+}
+.gx-menu > ul {
+	list-style-type: none;
+	height: 44px;
+}
+.gx-menu > ul > li {
+	display: inline-block;
+	width: 100px;
+	text-transform: uppercase;
+	text-align: center;
+	/*
+	margin-left: -2px;
+    margin-right: -2px;
+    */
+    height: 44px;
+    line-height: 44px;
+    white-space: nowrap;
+    background-color: #009688;
+
+}
+.gx-menu > ul > li.active {
+    background-color: #007a6f;
+}
+.gx-menu > ul > li > a {
+	text-decoration: none;
+	color: white;
+}
+
+/*Profile image*/
+.gx-my-image > img {
+	width: 100%;
+}
+.gx-my-name{
+	position: absolute;
+	bottom: 0;
+	background-color: rgba(0, 150, 136,0.4);
+	color: white;
+
+}
+.gx-left-title {
+	height: 44px;
+}
+.gx-left-icon {
+	width: 33px;
+	float: left;
+}
+.gx-left-sub {
+	float: right;
+	width: 267px;
+}
+.gx-separator {
+	height: 44px;
+    padding-top: 20px;
+}
+hr {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.gx-text-name {
+	font-size: 30px;
+	line-height: 40px;
+	font-family: "proxima_nova_ltsemibold";
+	font-variant: small-caps;
+	text-decoration: underline;
+}
+.gx-text-position {
+	font-size: 20px;
+	line-height: 30px;
+
+}
+.gx-left-title-grand {
+	height: 66px;
+	position: relative;
+}
+.gx-title-grand {
+	position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    font-size: 22px;
+    text-transform: uppercase;
+    -moz-transform: scale(1, 1.1);
+	-webkit-transform: scale(1, 1.1);
+	-ms-transform: scale(1, 1.1);
+}
+.gx-left-sub-percent {
+	height: 33px;
+}
+
+.gx-left-title-percent {
+	height: 77px;
+}
+.gx-left-sub-percent-png {
+	position: absolute;
+	bottom: 33px;
+}
+footer {
+	margin-top: 33px;
+	height: 80px;
+	background-color:#009688;
+	font-size: 17px;
+	color: white;
+	font-variant: small-caps;
+	text-align: center;
+}
+footer div{
+	padding-top: 20px;
+}
+.gx-smd, .gx-menu, #gx-left-side, .gx-right-side {
+	background-color: white;
+	padding: 17px;
+	box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+}
+.gx-left-side {
+	display: inline-block;
+	float: left;
+}
+.gx-right-side {
+	display: inline-block;
+	float: right;
+}
+.middle-title {
+	font-size: 22px;
+	text-transform: uppercase;
+	font-family: "proxima_nova_ltsemibold";
+}
+#gx-experiences > .gx-left-title > .gx-left-icon > img {
+	bottom: 5px;
+}
+.gx-calendar-img {
+	width:20px;
+	height:20px;
+	margin-bottom: 1px;
+}
+.gx-middle-title {
+	left: 80px;
+    font-size: 16px;
+    text-transform: inherit;
+}
+.gx-company-name {
+    color:#009688;
+    font-weight:600;
+}
+.gx-middle-title-skills {
+	left: 50px;
+	font-family: inherit;
+}
+.gx-project-category {
+	width: 136.5px;
+	height: 136.5px;
+	line-height: 136.5px;
+	display: inline-block;
+	float: left;
+}
+.gx-middle-title-experiences {
+	left: 80px;
+    font-family: inherit;
+}
+.gx-project-category {
+	background-color: #009688;
+    color: white;
+    text-align: center;
+    font-size: 22px;
+    font-family: "proxima_nova_ltsemibold";
+
+}
