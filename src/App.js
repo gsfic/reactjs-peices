@@ -24,7 +24,7 @@ class Counter extends Component {
         setInterval(() => {
             this.setState((prevState) => ({
                 counter: prevState.counter + 1,
-            }), () => console.log('Counter updated...'))
+            }))
         }, 1000)
         
     }
@@ -40,23 +40,55 @@ class Counter extends Component {
     }
 }
 
+class DeleteItem extends Component {
+
+    constructor(props) {
+        super(props);
+        this.deleteToDo = this.deleteToDo.bind(this);
+        this.deletingItem = this.deletingItem.bind(this);
+        this.state = {
+            deletedItem: 0
+        }
+        
+    }
+    deleteToDo() {
+        // make a separate copy of the array
+        
+        this.props.deletingItem(this.state.deletedItem);
+    }
+
+
+    deletingItem(e) {
+        this.setState({
+            deletedItem: e.target.value
+        })
+    }
+    
+    render() {
+        const {todos} = this.props;
+        return (
+            <div>
+                <input onChange={this.deletingItem} type="number" min="0" max="100"/>
+                <button onClick={this.deleteToDo}>Delete</button>
+            </div>
+        );
+    }
+}
 class UnorderedList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            todos: ['To Do 1', 'To Do 2', 'To Do 3', 'To Do 4', 'To Do 5']
-        }
+        
     }
     
     render() {
-        const {todos} = this.state;
+        const {todos} = this.props;
         return (
             <div>
                 <ul>
                     {
                         todos.map((todo, i) => (
-                            <li key={i}>{todo}</li>
+                            <li key={i}>{i+1} - {todo}</li>
                         ))
                     }
                     
@@ -71,14 +103,24 @@ class InteractionInput extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            valueInput: ''
+        }
+        this.inputChanged = this.inputChanged.bind(this);
+        this.addToDo = this.addToDo.bind(this);
+        
     }
 
     addToDo() {
-        console.log('Adding to do ...');
+        
+        this.props.inputChanged(this.state.valueInput);
     }
+
+    
     inputChanged(e) {
-        console.log('Input changed ' + e.target.value);
-        this.props.inputChanged(e.target.value);
+        this.setState({
+            valueInput: e.target.value
+        });
     }
     render() {
         return (
@@ -91,18 +133,33 @@ class InteractionInput extends Component {
 }
 
 class ToDoList extends Component {
-    state = {
-        todos: []
+    constructor(props) {
+        super(props);
+        this.state = {
+            todos: []
+        }
+        this.inputChanged = this.inputChanged.bind(this);
+        this.deletingItem = this.deletingItem.bind(this);
     }
 
     inputChanged(item) {
-        this.state.todos.push(item);
+        this.setState({
+            todos: this.state.todos.concat([item])
+        });
     }
+    deletingItem(index) {
+        var array = [...this.state.todos];
+        array.splice(index, 1);
+        this.setState({todos: array});
+    }
+    
     render() {
+        const {todos} = this.state;
         return (
             <div>
-                <UnorderedList inputChanged={this.inputChanged} />
-                <InteractionInput />
+                <UnorderedList todos={todos} />
+                <InteractionInput  inputChanged={this.inputChanged}/>
+                <DeleteItem deletingItem={this.deletingItem}/>
             </div>
         );
     }
@@ -122,7 +179,7 @@ class App extends Component {
     componentDidMount() {
         let whenCustomersLoaded = fetch('http://localhost:8082/api/customers');
         whenCustomersLoaded.then(res => res.json());
-        whenCustomersLoaded.then(customers => this.setState({customers}, () => console.log('Customers fetched...', customers)));
+        whenCustomersLoaded.then(customers => this.setState({customers}));
     }
     
     render() {
