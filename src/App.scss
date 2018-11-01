@@ -1,1 +1,16 @@
+@import 'helpers/parameters';
+.base-layout {
+    font-family: $sans-serif;
+    border: $border-light;
+    text-align: $text-center;
+    margin-bottom: 50px;
+}
+.my-name {
+    font-size: $font-size-biggest;
+    color: $color-primary;
+}
 
+.last-refresh {
+    font-size: $font-size-large;
+    color: $color-secondary;
+}

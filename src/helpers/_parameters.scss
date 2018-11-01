@@ -1,0 +1,44 @@
+/*** Parameters ***/
+
+// Colors
+$color-primary: #666;
+$color-secondary: #888;
+$color-text: #080707;
+
+// Brand color
+
+// Borders
+$border-light: solid 1px rgba(0, 0, 0, .05);
+
+// Font Size
+$font-size-biggest: 2.8rem;
+$font-size-largest: 2.3rem;
+$font-size-large: 1.2rem;
+$font-size-base: 1rem;
+$font-size-small: .9rem;
+$font-size-smallest: .75rem;
+
+// Spacing
+$spacing-small: .75rem;
+$spacing-single: 1rem;
+$spacing-double: 2rem;
+$spacing-triple: 3rem;
+$spacing-big: 6rem;
+
+// Media queries
+$desktop: 800px;
+$tablet: 600px;
+$mobile: 480px;
+
+// Font Family
+$sans-serif: 'Roboto', sans-serif;
+$serif: 'Playfair Display', serif;
+
+// Animation
+$anime-in: .4s;
+$anime-out: .5s;
+
+// Text alignement
+$text-left: left;
+$text-center: center;
+$text-right: right;

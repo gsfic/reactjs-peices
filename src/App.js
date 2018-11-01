@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import './App.scss';
 
 
-const App1 = (props) => {
+const Name = (props) => {
     const {name} = props;
     return (
-        <div>
-            Hello 1 {name}
+        <div className="my-name base-layout">
+            {name}
         </div>        
     );
 }
@@ -33,8 +33,8 @@ class Counter extends Component {
     render() {
         const {counter} = this.state;
         return (
-            <div>
-                Number of seconds : {counter}
+            <div className="last-refresh base-layout">
+                Last Refresh <strong>{counter}</strong> seconds
             </div>
         );
     }
@@ -65,7 +65,6 @@ class DeleteItem extends Component {
     }
     
     render() {
-        const {todos} = this.props;
         return (
             <div>
                 <input onChange={this.deletingItem} type="number" min="0" max="100"/>
@@ -75,11 +74,6 @@ class DeleteItem extends Component {
     }
 }
 class UnorderedList extends Component {
-
-    constructor(props) {
-        super(props);
-        
-    }
     
     render() {
         const {todos} = this.props;
@@ -112,8 +106,13 @@ class InteractionInput extends Component {
     }
 
     addToDo() {
-        
-        this.props.inputChanged(this.state.valueInput);
+        const {valueInput} = this.state;
+        if(valueInput) {
+            this.props.inputChanged(valueInput);
+            this.setState({
+                valueInput: ''
+            });
+        }
     }
 
     
@@ -121,6 +120,7 @@ class InteractionInput extends Component {
         this.setState({
             valueInput: e.target.value
         });
+        
     }
     render() {
         return (
@@ -132,11 +132,29 @@ class InteractionInput extends Component {
     }
 }
 
+class UndoLastModified extends Component {
+
+    
+
+    undoLastDeleted = () => {
+        this.props.undoLastDeleted();
+    }
+    render() {
+        return (
+            <div>
+                
+                <button onClick={this.undoLastDeleted}>Undo Last ToDo</button>
+            </div>
+        );
+    }
+}
+
 class ToDoList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            todos: []
+            todos: [],
+            lastDeleted: ''
         }
         this.inputChanged = this.inputChanged.bind(this);
         this.deletingItem = this.deletingItem.bind(this);
@@ -149,8 +167,17 @@ class ToDoList extends Component {
     }
     deletingItem(index) {
         var array = [...this.state.todos];
-        array.splice(index, 1);
-        this.setState({todos: array});
+        let deletedElement = array.splice(index, 1)[0];
+        this.setState({
+            todos: array,
+            lastDeleted: deletedElement
+        });
+    }
+
+    undoLastDeleted = () => {
+        this.setState({
+            todos: this.state.todos.concat([this.state.lastDeleted])
+        });
     }
     
     render() {
@@ -160,6 +187,7 @@ class ToDoList extends Component {
                 <UnorderedList todos={todos} />
                 <InteractionInput  inputChanged={this.inputChanged}/>
                 <DeleteItem deletingItem={this.deletingItem}/>
+                <UndoLastModified undoLastDeleted={this.undoLastDeleted} />
             </div>
         );
     }
@@ -185,9 +213,7 @@ class App extends Component {
     render() {
         return (
             <div>
-	    		
-	    		Hello All...
-                <App1 name="Amine TABOU" />
+                <Name name="Amine TABOU" />
                 <Counter />
 
 			    <ToDoList />
